@@ -1,27 +1,9 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven-3.6.3'
-    }
     stages {
-        stage('Build') {
+        stage('Stage 1') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
+                echo 'Hello world!'
             }
         }
     }
